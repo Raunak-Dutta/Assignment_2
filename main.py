@@ -83,7 +83,7 @@ class SongsToLearnApp(App):
             self.root.ids.my_label.item_strings = self.list_of_songs
 
 
-class List_song(ListItemButton):
+class ListSong(ListItemButton):
     pass
 
 
