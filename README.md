@@ -1,10 +1,13 @@
-# CP1404/5632 Assignment: Songs To Learn by YOURNAME
+# CP1404 Assignment: Songs To Learn by Raunak Dutta
 
-_Edit this README, replacing this line and above with your own assignment details._  
-_At the end of the project, complete the project reflection below by answering the questions (replace the ... parts)._
-_Note that to get full marks for this, your reflection should match the "exemplary" description from the rubric:_
-
-> The project reflection is complete and describes development and learning well, shows careful thought, highlights insights made during code development.
+While finishing up the Project, I found that careful planning was needed and keeping the end result
+ in mind wasn’t always necessary while I experimented with other thing that might or might not be useful
+ for the end result. I learned that there are a lot of ways to go about solving a problem and 
+ experimentation with the code is the best way to degerming which ways can be the most realistic as well
+ as optimal ways to solve a given problems, also dividing the larger problem into a bunch of sub problems 
+ does help a lot too. All and all this project took me upwards of 4:30 which is an all-time high for me, 
+ but well worth it because I learned a lot about Kivy and all it’s graphical prowess. While also learning
+ somethings about threading in python though, it is redacted from my final code.
 
 
 ## 1. How long did the entire project (assignment 2) take you?
