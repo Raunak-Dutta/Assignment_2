@@ -9,7 +9,7 @@ class Song:
         self.is_required = is_required
 
     def is_learned(self):
-        #print(self.is_required)
+
         if self.is_required == 'y':
             return True
         elif self.is_required == 'n':

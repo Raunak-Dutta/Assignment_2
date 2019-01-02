@@ -1,8 +1,9 @@
 """
-Name:
-Date:
-Brief Project Description:
-GitHub URL:
+Name: Raunak Dutta
+Date: 2-Jan-2019
+Brief Project Description: To create a GUI app that helps you memorize songs, add songs and eventually clear them
+when you're done memorizing them, makes no sense to me but whatever I didn't make this project.
+GitHub URL:https://github.com/Raunak-Dutta/Assignment_2
 """
 
 from kivy.app import App
