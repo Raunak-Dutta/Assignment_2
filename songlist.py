@@ -84,3 +84,41 @@ class SongList:
                 return_line = str(Song(line[0], line[1], line[2], line[3]))
                 new_lst.append(return_line)
         return new_lst
+
+    def song_clear(self,str_):
+        end_str = []
+        for file_line in self.song_obj:
+            TITLE = ''
+            ARTIST = ''
+            YEAR = ''
+            LEARNED = ''
+            # print(file_line)
+            flag = 0  # flag to test for various modes
+            for w in file_line:
+                if w == ',':
+                    flag += 1
+                else:
+                    if flag == 0:
+                        TITLE += w
+                    elif flag == 1:
+                        ARTIST += w
+                    elif flag == 2:
+                        YEAR += w
+                    elif flag == 3:
+                        LEARNED += w
+                        flag = -99  # Resetting flag so no conflict occurs
+            end_str.append(str(Song(TITLE, ARTIST, YEAR, LEARNED)))
+        if str_ in end_str:
+            indx = end_str.index(str_)
+            temp_str = self.song_obj[indx]
+            temp_str = temp_str[:-2] + 'y\n'
+            self.song_obj[indx] = temp_str
+            file_w = open('songs.csv', 'w+')
+            file_w.truncate()  # truncate the file that is empty it for the new list to be written
+            for eliment in self.song_obj:
+                if eliment != " ":
+                    file_w.writelines(eliment)
+            file_w.close()  # Close the file
+        else:
+            print('UNEXPECTED OUTPUT')
+            print(return_line)

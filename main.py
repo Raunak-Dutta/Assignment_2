@@ -28,6 +28,7 @@ class SongsToLearnApp(App):
     Config.set('graphics', 'height', '1080')
     list_of_songs = update_list()
     sort_codes = ['Title', 'Artist', 'Year']
+
     # list_of_songs = update_list()
 
     def build(self):
@@ -51,6 +52,7 @@ class SongsToLearnApp(App):
                     ap_str = title + ',' + artist + ',' + year + ',n'
                     song_list.add_song(ap_str)
                     self.list_of_songs = update_list()
+                    self.root.ids.my_label.item_strings = self.list_of_songs
                 else:
                     self.root.ids.input_year.text = 'Please enter valid year'
             else:
@@ -62,16 +64,28 @@ class SongsToLearnApp(App):
         song_list = SongList()
         if sort_order == 'Title':
             self.list_of_songs = (song_list.sort_song(0))
-            print(self.list_of_songs)
+            self.root.ids.my_label.item_strings = self.list_of_songs
 
         elif sort_order == 'Artist':
             self.list_of_songs = (song_list.sort_song(1))
+            self.root.ids.my_label.item_strings = self.list_of_songs
 
         else:
             self.list_of_songs = (song_list.sort_song(2))
+            self.root.ids.my_label.item_strings = self.list_of_songs
+
+    def on_click_song(self):  # To cleared selected song
+        song_list = SongList()
+        if self.root.ids.my_label.adapter.selection:
+            song_to_clear = str(self.root.ids.my_label.adapter.selection[0].text)
+            song_list.song_clear(song_to_clear)
+            self.list_of_songs = (song_list.sort_song(0))
+            self.root.ids.my_label.item_strings = self.list_of_songs
+
 
 class List_song(ListItemButton):
     pass
+
 
 SongsToLearnApp().run()
 

@@ -2,6 +2,7 @@
 #: import main main
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
 #: import ListItemButton kivy.uix.listview.ListItemButton
+#my_label_view: my_label
 BoxLayout:
     padding: 5
     orientation: 'vertical'
@@ -63,7 +64,7 @@ BoxLayout:
 
             Button:
                 text: "Clear"
-                on_press: app.handle_pressed()
+                on_press: app.on_click_song()
 
 
         BoxLayout:  # Top-Right
@@ -71,6 +72,6 @@ BoxLayout:
             ListView:
                 id: my_label
                 adapter:
-                    ListAdapter(data=app.list_of_songs, cls=main.List_song)
-                #text: str(app.list_of_songs)
+                    ListAdapter(data=app.list_of_songs, cls=main.List_song,)
+                text: str(app.list_of_songs)
                 font_size: 42
