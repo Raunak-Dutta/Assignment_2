@@ -23,4 +23,3 @@ class Song:
 
         else:
             return '{0} By {1} {2}'.format(self.title, self.artist, self.year,)
-

@@ -1,4 +1,7 @@
 # create your Kivy layout in the kv language here
+#: import main main
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import ListItemButton kivy.uix.listview.ListItemButton
 BoxLayout:
     padding: 5
     orientation: 'vertical'
@@ -13,46 +16,50 @@ BoxLayout:
                 font_size: 36
                 text: 'Sort By'
 
-            Button:
-                text: "Place_Holder"
-                on_press: app.handle_pressed()
+            Spinner:
+                id: sort_selection
+                text: 'select sort...'
+                values: app.sort_codes
+                # on_text is the event (not on_release) when the text updates (spinner option is selected)
+                # note that on_text runs even when the text is set for the very first time
+                on_text: app.sort_song(self.text)
 
             Label:
-                id: output_label
+                id: output_label_title
                 font_size: 36
                 text: 'title'
 
             TextInput:
-                id: input_miles
+                id: input_title
                 text: 'Input Title'
                 font_size: 36
-                on_text: app.handle_calculate()
+                #on_text: app.handle_calculate()
 
             Label:
-                id: output_label
+                id: output_label_artist
                 font_size: 36
                 text: 'artist'
 
             TextInput:
-                id: input_miles
+                id: input_artist
                 text: 'Input Artist'
                 font_size: 36
-                on_text: app.handle_calculate()
+                #on_text: app.handle_calculate()
 
             Label:
-                id: output_label
+                id: output_label_year
                 font_size: 36
                 text: 'year'
 
             TextInput:
-                id: input_miles
+                id: input_year
                 text: 'Input Year'
                 font_size: 48
-                on_text: app.handle_calculate()
+                #on_text: app.handle_calculate()
 
             Button:
                 text: "Add Song"
-                on_press: app.handle_pressed()
+                on_press: app.handle_add()
 
             Button:
                 text: "Clear"
@@ -61,7 +68,9 @@ BoxLayout:
 
         BoxLayout:  # Top-Right
             orientation: 'vertical'
-            Label:
+            ListView:
                 id: my_label
-                text: "Hello world"
+                adapter:
+                    ListAdapter(data=app.list_of_songs, cls=main.List_song)
+                #text: str(app.list_of_songs)
                 font_size: 42
