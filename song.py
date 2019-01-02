@@ -18,5 +18,9 @@ class Song:
             return 'No song found'
 
     def __str__(self):
-        return '{0} By {1} {2} is song Learned? {3}'.format(self.title, self.artist, self.year, self.is_learned())
+        if self.is_learned():
+            return '{0} By {1} {2} ({3})'.format(self.title, self.artist, self.year, 'learned')
+
+        else:
+            return '{0} By {1} {2}'.format(self.title, self.artist, self.year,)
 

@@ -7,7 +7,7 @@ print(song)
 assert song.artist == ""
 assert song.title == ""
 assert song.year == 0
-assert song.is_required == False
+assert song.is_required == 'n'
 
 # test initial-value song
 song2 = Song("Amazing Grace", "John Newton", 1779, True)
