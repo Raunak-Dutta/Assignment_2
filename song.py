@@ -2,13 +2,13 @@
 
 
 class Song:
-    def __init__(self, title='', artist='', year=0, is_required='n'):
+    def __init__(self, title='', artist='', year=0, is_required='n'):  # this class formats songs into a printable view
         self.title = title
         self.artist = artist
         self.year = year
         self.is_required = is_required
 
-    def is_learned(self):
+    def is_learned(self):  # this function checks if song is learned or not
 
         if self.is_required == 'y':
             return True
@@ -17,7 +17,7 @@ class Song:
         else:
             return 'No song found'
 
-    def __str__(self):
+    def __str__(self):  # return songs into a displayable view
         if self.is_learned():
             return '{0} By {1} {2} ({3})'.format(self.title, self.artist, self.year, 'learned')
 

@@ -5,9 +5,27 @@
 #my_label_view: my_label
 BoxLayout:
     padding: 5
+    id: main_app
     orientation: 'vertical'
+    Popup:
+        id: warn
+        size_hint: (.6, .15)
+        title: "Song already learned."
+        on_parent:
+            # Make popup disappear immediately
+            if self.parent == main_app: self.parent.remove_widget(self)
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                id: popup_return_text
+                size_hint_y: None
+                height: '48dp'
+            Button:
+                text: 'OK'
+                height: '48dp'
+                on_release: app.press_popup_ok()
     BoxLayout:
-        orientation: 'horizontal'
+        orientation: 'horizontal'  # Box layout to follow convention
         BoxLayout:  # Top-Left
             orientation: 'vertical'
             size_hint_x: 0.35
@@ -17,9 +35,9 @@ BoxLayout:
                 font_size: 36
                 text: 'Sort By'
 
-            Spinner:
+            Spinner:  # Declaration of the spinner
                 id: sort_selection
-                text: 'select sort...'
+                text: 'Select sort...'
                 values: app.sort_codes
                 # on_text is the event (not on_release) when the text updates (spinner option is selected)
                 # note that on_text runs even when the text is set for the very first time
@@ -32,6 +50,9 @@ BoxLayout:
 
             TextInput:
                 id: input_title
+                write_tab: False
+                multiline: False
+                on_text_validate: root.foo()
                 text: 'Input Title'
                 font_size: 36
                 #on_text: app.handle_calculate()
@@ -43,6 +64,9 @@ BoxLayout:
 
             TextInput:
                 id: input_artist
+                write_tab: False
+                multiline: False
+                on_text_validate: root.foo()
                 text: 'Input Artist'
                 font_size: 36
                 #on_text: app.handle_calculate()
@@ -54,6 +78,9 @@ BoxLayout:
 
             TextInput:
                 id: input_year
+                write_tab: False
+                multiline: False
+                on_text_validate: root.foo()
                 text: 'Input Year'
                 font_size: 48
                 #on_text: app.handle_calculate()
@@ -62,9 +89,16 @@ BoxLayout:
                 text: "Add Song"
                 on_press: app.handle_add()
 
-            Button:
-                text: "Clear"
-                on_press: app.on_click_song()
+            BoxLayout:  # Top-Right
+                orientation: 'horizontal'
+
+                Button:
+                    text: "Clear"
+                    on_press: app.clear_input()
+
+                Button:
+                    text: "Mark Song As Learned"
+                    on_press: app.on_click_song()
 
 
         BoxLayout:  # Top-Right
@@ -73,6 +107,4 @@ BoxLayout:
                 id: my_label
                 adapter:
                     ListAdapter(data=app.list_of_songs, cls=main.ListSong,)
-
                 text: str(app.list_of_songs)
-                font_size: 42
